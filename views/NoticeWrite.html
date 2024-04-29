@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/NoticeWrite.css" />
+    <link rel="stylesheet" type="text/css" href="/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/base.css" />
+    <title>Word Salad</title>
+  </head>
+  <body>
+    <header>
+      <div class="MainTitle">
+        <div class="Top">
+          <h2>아무 말 대잔치</h2>
+          <a href="#">
+            <img class="image" src="/images/profile_img.webp" />
+          </a>
+        </div>
+      </div>
+    </header>
+    <article>
+      <div class="container">
+        <div class="title">
+          <h3>게시글 작성</h3>
+        </div>
+        <form id="form">
+          <p><strong>제목 *</strong></p>
+          <input
+            type="text"
+            name="email"
+            placeholder="제목을 입력해주세요. (최대 26글자)"
+          />
+          <p><strong>내용 *</strong></p>
+          <textarea
+            cols="80"
+            rows="23"
+            placeholder="내용을 입력해주세요"
+          ></textarea>
+        </form>
+        <div class="image">
+          <h4><strong>이미지</strong></h4>
+          <div class="upload">
+            <button type="button" class="upload">파일 선택</button>
+            <p>파일을 선택해주세요.</p>
+          </div>
+        </div>
+        <div class="write">
+          <input
+            type="submit"
+            value="완료"
+            onclick="location.href='/notice';"
+          />
+        </div>
+      </div>
+    </article>
+  </body>
+</html>

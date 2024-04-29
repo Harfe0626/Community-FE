@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/Signup.css" />
+    <link rel="stylesheet" type="text/css" href="/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/base.css" />
+    <title>Word Salad</title>
+  </head>
+  <body>
+    <header>
+      <div class="MainTitle">
+        <div class="Top">
+          <h2>아무 말 대잔치</h2>
+        </div>
+      </div>
+    </header>
+    <article>
+      <div class="container">
+        <h2>회원가입</h2>
+        <div class="profile">
+          <p>프로필 사진</p>
+          <img class="image" src="../images/profile_img.webp" />
+        </div>
+        <form id="form">
+          <p>이메일 *</p>
+          <input 
+            type="text" 
+            name="email" 
+            placeholder="이메일을 입력하세요" 
+            id="email"/>
+          <p>비밀번호 *</p>
+          <input
+            type="password"
+            name="password"
+            placeholder="비밀번호를 입력하세요"
+            id="password"
+          />
+          <p>비밀번호 확인 *</p>
+          <input
+            type="password"
+            name="password"
+            placeholder="비밀번호를 한번 더 입력하세요"
+          />
+          <p>닉네임 *</p>
+          <input
+            type="text"
+            name="nickname"
+            placeholder="닉네임을 입력하세요"
+            id="nickname"
+          />
+          <input type="submit" value="회원가입" />
+          <a href="Login.html">로그인하러 가기</a>
+        </form>
+      </div>
+    </article>
+    <script src="../public/js/signup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/MemberEdit.css" />
+    <link rel="stylesheet" type="text/css" href="/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/base.css" />
+    <title>Word Salad</title>
+  </head>
+  <body>
+    <header>
+      <div class="MainTitle">
+        <div class="Top">
+          <h2>아무 말 대잔치</h2>
+          <a href="/memberinfo">
+            <img class="image" src="/images/profile_img.webp" />
+          </a>
+        </div>
+      </div>
+    </header>
+    <article>
+      <div class="container">
+        <h2>비밀번호 수정</h2>
+        <form id="form">
+          <p>비밀번호</p>
+          <input
+            type="password"
+            name="password"
+            placeholder="비밀번호를 입력하세요"
+          />
+          <p>비밀번호 확인</p>
+          <input
+            type="password"
+            name="password"
+            placeholder="비밀번호를 한번 더 입력하세요"
+          />
+          <input
+            type="submit"
+            value="수정하기"
+            formaction="/login"
+          />
+        </form>
+      </div>
+    </article>
+  </body>
+</html>

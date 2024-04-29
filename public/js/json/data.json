@@ -1,0 +1,42 @@
+[
+        {
+            "id": 1,
+            "title": "제목 1-1",
+            "writer": "Eric",
+            "date": "2024-04-15 00:00:00",
+            "image": "../../images/IMG_3918.JPG",
+            "content": "contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent",
+            "views": 123,
+            "comments": 456
+        },
+        {
+            "id": 2,
+            "title": "제목 2-1",
+            "writer": "John",
+            "date": "2024-04-16 00:00:00",
+            "image": "../../images/IMG_3918.JPG",
+            "content": "content2content2content2content2content2content2content2content2content2",
+            "views": 789,
+            "comments": 1012
+        },
+        {
+            "id": 3,
+            "title": "제목 3-1",
+            "writer": "Jane",
+            "date": "2024-04-17 00:00:00",
+            "image": "../../images/IMG_3918.JPG",
+            "content": "content3content3content3content3content3content3content3content3content3",
+            "views": 345,
+            "comments": 678
+        },
+        {
+            "id": 4,
+            "title": "제목 4-1",
+            "writer": "Doe",
+            "date": "2024-04-18 00:00:00",
+            "image": "../../images/IMG_3918.JPG",
+            "content": "content4content4content4content4content4content4content4content4content4",
+            "views": 9101,
+            "comments": 234
+        }
+]
