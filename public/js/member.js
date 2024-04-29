@@ -1,27 +1,27 @@
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get('id');
 
-fetch('/js/json/users.json')
-.then(response => {
-    if (!response.ok) {
-        throw new Error('Network Error');
+const fetchUserInfo = async () => {
+    try {
+        const response = await fetch('/js/json/users.json');
+        if (!response.ok) {
+            throw new Error('Network Error');
+        }
+        const users = await response.json();
+        const user = users.find(user => user.id === parseInt(userId));
+        if (user) {
+            displayUserInfo(user);
+        } else {
+            alert('Cannot find UserInfo');
+        }
+    } catch (error) {
+        console.error('오류:', error);
+        // 오류 발생 시 할 작업 추가
     }
-    return response.json();
-})
-.then(users => {
-    const user = users.find(users => users.id === parseInt(userId));
-    if(user) {
-        displayUserInfo(user);
-    } else {
-        alert('Cannot find UserInfo');
-    }
-})
-.catch(error => {
-    console.error('오류:', error);
-    // 오류 발생 시 할 작업 추가
-});
+};
 
-function displayUserInfo(users) {
+const displayUserInfo = (user) => {
+    const { email, nickname, id } = user;
     const userInfoContainer = document.createElement('div');
     userInfoContainer.innerHTML = `
     <div class="editUserInfo">
@@ -32,9 +32,9 @@ function displayUserInfo(users) {
         </div>
         <form id="form">
           <p>이메일</p>
-          <p>${users.email}</p>
+          <p>${email}</p>
           <p>닉네임</p>
-          <input type="text" name="nickname" placeholder="${users.nickname}"/>
+          <input type="text" name="nickname" placeholder="${nickname}"/>
           <input
             type="submit"
             value="수정하기"
@@ -45,9 +45,13 @@ function displayUserInfo(users) {
         <input
           type="submit"
           value="수정완료"
-          onclick="location.href='notice?id=${users.id}'"
+          onclick="location.href='notice?id=${id}'"
         />
-        </div>
+    </div>
     `;
     document.querySelector('.container').appendChild(userInfoContainer);
-}
+};
+
+fetchUserInfo();
+
+

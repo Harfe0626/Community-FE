@@ -1,35 +1,35 @@
-const editNotice = document.getElementById('editNotice'); 
+const editNotice = document.getElementById('editNotice');
 const urlParams = new URLSearchParams(window.location.search);
 const dataId = urlParams.get('id');
 
-fetch('/js/json/data.json')
-    .then(response => {
+const fetchData = async () => {
+    try {
+        const response = await fetch('/js/json/data.json');
         if (!response.ok) {
             throw new Error('Network Error');
         }
-        return response.json();
-    })
-    .then(data => {
-        const post = data.find(data => data.id === parseInt(dataId));
-        if(post) {
+        const data = await response.json();
+        const post = data.find(item => item.id === parseInt(dataId));
+        if (post) {
             displayEdit(post);
             console.log(post);
         } else {
             console.log(post);
         }
-    })
-    .catch(error => {
+    } catch (error) {
         console.error('오류:', error);
-    });
+    }
+};
 
-    function displayEdit(data) {
-        const noticeEdit = document.createElement('div');
-        noticeEdit.innerHTML = `
+const displayEdit = (data) => {
+    const { title, content, id } = data;
+    const noticeEdit = document.createElement('div');
+    noticeEdit.innerHTML = `
         <form id="form">
             <p><strong>제목 *</strong></p>
-            <input type="text" name="email" placeholder="${data.title}"/>
+            <input type="text" name="email" placeholder="${title}"/>
             <p><strong>내용 *</strong></p>
-            <textarea cols="80" rows="20" placeholder="${data.content}"></textarea>
+            <textarea cols="80" rows="20" placeholder="${content}"></textarea>
         </form>
         <div class="image">
           <h4><strong>이미지</strong></h4>
@@ -42,10 +42,12 @@ fetch('/js/json/data.json')
           <input
             type="submit"
             value="수정하기"
-            onclick="location.href='/notice?id=${data.id}'"
+            onclick="location.href='/notice?id=${id}'"
           />
         </div>
-        `;
-        document.querySelector('.editPlace').appendChild(noticeEdit);
-    }
+    `;
+    document.querySelector('.editPlace').appendChild(noticeEdit);
+};
+
+fetchData();
 

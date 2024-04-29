@@ -1,44 +1,44 @@
 const urlParams = new URLSearchParams(window.location.search);
 const dataId = urlParams.get('id');
 
-fetch('/js/json/data.json')
-    .then(response => {
+const fetchData = async () => {
+    try {
+        const response = await fetch('/js/json/data.json');
         if (!response.ok) {
             throw new Error('Network Error');
         }
-        return response.json();
-    })
-    .then(data => {
-        const post = data.find(data => data.id === parseInt(dataId));
-        if(post) {
+        const data = await response.json();
+        const post = data.find(item => item.id === parseInt(dataId));
+        if (post) {
             displayDetail(post);
             console.log(post);
         } else {
             console.log(post);
         }
-    })
-    .catch(error => {
+    } catch (error) {
         console.error('오류:', error);
-    });
+    }
+};
 
-    function displayDetail(data) {
-        const noticeDetail = document.createElement('div');
-        noticeDetail.innerHTML = `
+const displayDetail = (data) => {
+    const { title, writer, date, content, views, comments, id } = data;
+    const noticeDetail = document.createElement('div');
+    noticeDetail.innerHTML = `
         <div class="card">
             <div class="card-title" id="title">
-                <h3>${data.title}</h3>
+                <h3>${title}</h3>
             </div>
             <div class="card-writer">
                 <img class="image" src="/images/profile_img.webp" />
                 <p id="writer">
-                    <strong>${data.writer}</strong>
+                    <strong>${writer}</strong>
                 </p>
-                <span id="date">${data.date}</span>
+                <span id="date">${date}</span>
                 <div class="buttons">
                     <button
                         type="button"
                         class="edit"
-                        onclick="location.href='/noticeedit?id=${data.id}'"
+                        onclick="location.href='/noticeedit?id=${id}'"
                     >수정</button>
                     <button
                         type="button"
@@ -50,21 +50,24 @@ fetch('/js/json/data.json')
             <div class="card-cont">
                 <img class="cont" src="/images/IMG_3918.JPG" id="image" />
                 <p id="content">
-                    ${data.content}
+                    ${content}
                 </p>
                 <div class="cont-info">
                 <div class="views" id="views">
-                    조회수<br />${data.views}
+                    조회수<br />${views}
                 </div>
                 <div class="comm" id="comments">
-                    댓글<br />${data.comments}
+                    댓글<br />${comments}
                 </div>
                 </div>
             </div>
         </div>
-        `;
-        document.querySelector('.card-base').appendChild(noticeDetail);
-    }
+    `;
+    document.querySelector('.card-base').appendChild(noticeDetail);
+};
+
+fetchData();
+
 
     // editNotice.addEventListener('click', () => {
     //     alert('Do you want to edit it?');
